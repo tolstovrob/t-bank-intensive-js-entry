@@ -1,3 +1,4 @@
+import { styleObjectToString } from '../../utils';
 import './style.css';
 
 /**
@@ -6,9 +7,13 @@ import './style.css';
 export class Box {
 	/**
 	 * @param {*} root - элемент DOM, в который примонтируется Box
+	 * @param {*} gridArea - CSS-свойство gridArea, которое связано с соответствующим Grid
 	 */
-	constructor(root) {
-		this.root = root ?? null;
+	constructor(root = null, gridArea) {
+		this.root = root;
+		this.styles = {
+			...(gridArea && { 'grid-area': gridArea }),
+		};
 	}
 
 	/**
@@ -19,7 +24,7 @@ export class Box {
 	}
 
 	getComponent() {
-		return `<div class="box">
+		return `<div class="box" style="${styleObjectToString(this.styles)}">
   Hello from Box
 </div>`;
 	}
