@@ -1,3 +1,4 @@
+import { styleObjectToString } from '@/utils';
 import './style.css';
 
 /**
@@ -5,17 +6,24 @@ import './style.css';
  */
 export class Grid {
 	/**
-	 * @param {*} root - элемент DOM, в который примонтируется Box
+	 * @param {*} root - элемент DOM, в который примонтируется Grid
+	 * @param {*} boxes - список коробок, которые будет использовать Grid
+	 * @param {*} areas - строка с областями
 	 */
-	constructor(root, boxes) {
+	constructor(root = null, boxes, areas) {
 		this.root = root;
 		this.boxes = boxes;
+		this.areas = areas;
+
+		this.styles = {
+			...(areas && { 'grid-template-areas': areas }),
+		};
 	}
 
-	/**
-	 * Функция для рендера компонента. Должна быть корректно переобределена для каждого унаследованного компонента
-	 */
 	render() {
-		this.root.innerHTML = `<main>${this.boxes.map((box) => box.getComponent()).join('')}</main>`;
+		// TODO(tolstovrob): replace mock grid-template-areas with actual reevaluation
+		this.root.innerHTML = `<main class="grid" style="${styleObjectToString(this.styles)}">
+  ${this.boxes.map((box) => box.getComponent()).join('')}
+</main>`;
 	}
 }
