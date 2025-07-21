@@ -1,5 +1,6 @@
-import './main.css';
-import { Box } from './components/Box';
+import '@/main.css';
+import { Box } from '@/components/Box';
+import { Grid } from '@/components/Grid';
 
 function renderApp(root) {
 	root.innerHTML = `
@@ -9,8 +10,12 @@ function renderApp(root) {
   </div>
 `;
 
-	const TestBox = new Box(document.querySelector('main'));
-	TestBox.render();
+	const grid = new Grid(
+		document.querySelector('main'),
+		[new Box(null, 'test1'), new Box(null, 'test2'), new Box(null, 'test3')],
+		"'test1 test1' 'test2 test3'",
+	);
+	grid.render();
 }
 
 renderApp(document.querySelector('#app'));
