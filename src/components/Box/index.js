@@ -15,7 +15,11 @@ export class Box {
 	 * Функция для рендера компонента. Должна быть корректно переобределена для каждого унаследованного компонента
 	 */
 	render() {
-		this.root.innerHTML = `<div class="box">
+		this.root.innerHTML = getComponent();
+	}
+
+	getComponent() {
+		return `<div class="box">
   Hello from Box
 </div>`;
 	}
