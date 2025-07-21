@@ -1,4 +1,4 @@
-import { styleObjectToString } from '../../utils';
+import { styleObjectToString } from '@/utils';
 import './style.css';
 
 /**
