@@ -16,13 +16,13 @@ export class Box {
 		};
 	}
 
-	/**
-	 * Функция для рендера компонента. Должна быть корректно переобределена для каждого унаследованного компонента
-	 */
 	render() {
 		this.root.innerHTML = getComponent();
 	}
 
+	/**
+	 * Функция для получения компонента. Должна быть корректно переобределена для каждого унаследованного компонента
+	 */
 	getComponent() {
 		return `<div class="box" style="${styleObjectToString(this.styles)}">
   Hello from Box
