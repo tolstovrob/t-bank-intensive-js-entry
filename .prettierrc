@@ -1,0 +1,9 @@
+{
+	"experimentalOperatorPosition": "start",
+	"printWidth": 120,
+	"useTabs": true,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"bracketSameLine": true,
+	"singleAttributePerLine": true
+}
