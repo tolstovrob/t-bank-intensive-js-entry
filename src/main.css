@@ -22,3 +22,14 @@ body {
 	background-color: var(--default-bg-color);
 	color: var(--default-fg-color);
 }
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(12, 5rem);
+	gap: 2rem;
+	width: 100svw;
+	height: 100svh;
+	position: relative;
+	background: var(--default-bg-color);
+}

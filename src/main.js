@@ -1,23 +1,19 @@
 import '@/main.css';
-import { Box } from '@/components/Box';
-import { Grid } from '@/components/Grid';
-import { gridState } from '@/store';
-import { gridStateToGridTemplateAreas } from './utils';
+
+const gridRows = 12,
+	gridCols = 4,
+	boxes = [
+		{ name: 'avatar', row: 0, col: 0, rows: 1, cols: 1 },
+		{ name: 'info', row: 0, col: 1, rows: 1, cols: 1 },
+	],
+	grid = document.querySelector('main.grid');
 
 function renderApp(root) {
 	root.innerHTML = `
   <div>
-    <h1>Hello Vite!</h1>
-    <main></main>
+    <main class="grid"></main>
   </div>
 `;
-
-	const grid = new Grid(
-		document.querySelector('main'),
-		[new Box(null, 'info'), new Box(null, 'avatar'), new Box(null, 'experience')],
-		gridStateToGridTemplateAreas(gridState),
-	);
-	grid.render();
 }
 
 renderApp(document.querySelector('#app'));
