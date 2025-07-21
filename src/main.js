@@ -1,6 +1,8 @@
 import '@/main.css';
 import { Box } from '@/components/Box';
 import { Grid } from '@/components/Grid';
+import { gridState } from '@/store';
+import { gridStateToGridTemplateAreas } from './utils';
 
 function renderApp(root) {
 	root.innerHTML = `
@@ -12,8 +14,8 @@ function renderApp(root) {
 
 	const grid = new Grid(
 		document.querySelector('main'),
-		[new Box(null, 'test1'), new Box(null, 'test2'), new Box(null, 'test3')],
-		"'test1 test1' 'test2 test3'",
+		[new Box(null, 'info'), new Box(null, 'avatar'), new Box(null, 'experience')],
+		gridStateToGridTemplateAreas(gridState),
 	);
 	grid.render();
 }
