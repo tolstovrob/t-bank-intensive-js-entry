@@ -8,7 +8,7 @@ export class Box {
 	 * @param {*} root - элемент DOM, в который примонтируется Box
 	 */
 	constructor(root) {
-		this.root = root;
+		this.root = root ?? null;
 	}
 
 	/**
