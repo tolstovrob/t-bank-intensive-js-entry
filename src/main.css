@@ -31,8 +31,10 @@ body {
 	width: 100svw;
 	height: 100svh;
 	transition: all 1s;
+}
 
-	& * {
-		transition: all 1s;
-	}
+.box {
+	background-color: red;
+	border-radius: 1rem;
+	padding: 1rem;
 }

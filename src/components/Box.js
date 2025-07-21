@@ -14,7 +14,9 @@ export class Box {
 	}
 
 	render() {
-		this.el.style.gridColumn = `${this.col} / span ${this.colSpan}`;
-		this.el.style.gridRow = `${this.row} / span ${this.rowSpan}`;
+		this.el.style.gridColumnStart = this.col;
+		this.el.style.gridColumnEnd = this.col + this.cols;
+		this.el.style.gridRowStart = this.row;
+		this.el.style.gridRowEnd = this.row + this.rows;
 	}
 }
