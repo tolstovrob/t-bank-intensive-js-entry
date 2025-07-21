@@ -22,19 +22,3 @@ body {
 	background-color: var(--default-bg-color);
 	color: var(--default-fg-color);
 }
-
-.grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(12, 1fr);
-	gap: 1rem;
-	width: 100svw;
-	height: 100svh;
-	transition: all 1s;
-}
-
-.box {
-	background-color: red;
-	border-radius: 1rem;
-	padding: 1rem;
-}
