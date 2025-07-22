@@ -102,6 +102,10 @@ nav {
 }
 
 main {
+	/* DEV! */
+	border: 1px dashed black;
+	/* DEV! */
+
 	margin: 1rem auto;
 	max-width: var(--mobile-breakpoint);
 	width: 100%;
