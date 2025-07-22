@@ -1,0 +1,25 @@
+import { Component } from './Component';
+
+export class Box extends Component {
+	constructor(el, options) {
+		super(el);
+		this.row = options.row;
+		this.col = options.col;
+		this.rows = options.rows;
+		this.cols = options.cols;
+		this.id = options.id;
+	}
+
+	getComponent() {
+		return `<div class="box" id="${this.id}" style="">
+      ${this.getInnerComponent()}
+    </div>`;
+	}
+
+	// NOTE(tolstovrob): overload this!
+	getInnerComponent() {
+		return `
+      Hello from box ${this.id}
+    `;
+	}
+}
