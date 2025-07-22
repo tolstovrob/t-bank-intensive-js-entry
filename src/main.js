@@ -6,7 +6,9 @@ function renderApp(root) {
 	const navbar = new Navbar(root);
 	navbar.render();
 
-	const grid = new Grid(root, []);
+	const boxes = [];
+
+	const grid = new Grid(root, boxes);
 	grid.render();
 }
 
