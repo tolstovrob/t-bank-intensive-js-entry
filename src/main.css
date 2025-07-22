@@ -57,6 +57,10 @@ nav {
 		& img {
 			height: 2rem;
 		}
+
+		& strong {
+			margin-bottom: 1px;
+		}
 	}
 
 	& > *:last-child {
