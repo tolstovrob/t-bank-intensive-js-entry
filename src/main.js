@@ -1,6 +1,7 @@
 import '@/main.css';
 import { Navbar } from '@/components/Navbar';
 import { Grid } from './components/Grid';
+import { Box } from './components/Box';
 
 function renderApp(root) {
 	const navbar = new Navbar(root);
@@ -17,8 +18,16 @@ function renderApp(root) {
 		{ id: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
 	];
 
-	const grid = new Grid(root, boxesOptions);
+	const grid = new Grid(root);
 	grid.render();
+
+	const gridSelector = grid.getSelfSelector();
+	const boxes = [];
+	boxesOptions.forEach((boxOptions) => {
+		const box = new Box(gridSelector, boxOptions);
+		boxes.push(box);
+		box.render();
+	});
 }
 
 renderApp(document.querySelector('#app'));
