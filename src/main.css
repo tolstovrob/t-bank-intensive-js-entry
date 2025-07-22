@@ -11,6 +11,12 @@
 :root {
 	--default-bg-color: white;
 	--default-fg-color: black;
+	--tbank-bg-color: #ffdd2d;
+	--tbank-fg-color: black;
+	--box-bg-color: #f0f0f0;
+	--box-fg-color: black;
+	--box-hover-bg-color: #ccc;
+	--box-hover-fg-color: black;
 	--mobile-breakpoint: 1368px;
 
 	font-size: 16px;
@@ -20,6 +26,75 @@
 body {
 	background-color: var(--default-bg-color);
 	color: var(--default-fg-color);
+}
+
+nav {
+	position: sticky;
+	top: 1rem;
+	background-color: rgba(var(--default-bg-color));
+	border: 1px solid var(--box-hover-bg-color);
+	backdrop-filter: blur(5px);
+	margin: 1rem;
+	padding: 1rem 2rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 50;
+
+	& > *:first-child {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-size: larger;
+		text-transform: uppercase;
+		font-weight: bolder;
+		user-select: none;
+
+		& img {
+			height: 2rem;
+		}
+	}
+
+	& > *:last-child {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+
+		& > button,
+		> a {
+			display: flex;
+			flex-direction: row;
+			gap: 0.5rem;
+			align-items: center;
+			border-radius: 0.5rem;
+			border: 1px solid var(--box-hover-bg-color);
+			padding: 0.5rem 1rem;
+			font-size: medium;
+			font-weight: bold;
+			font-family: 'Poppins', sans-serif;
+			background-color: transparent;
+			color: var(--box-fg-color);
+			cursor: pointer;
+			transition: all 0.25s;
+
+			&:hover {
+				background-color: var(--box-bg-color);
+				color: var(--box-fg-color);
+			}
+
+			&:active {
+				scale: 0.95;
+			}
+
+			& svg {
+				height: 1.25rem;
+			}
+		}
+	}
 }
 
 main {
