@@ -6,9 +6,7 @@ export class Grid extends Component {
 	}
 
 	getComponent() {
-		return `<main>
-      
-    </main>`;
+		return `<main></main>`;
 	}
 
 	getSelfSelector() {
