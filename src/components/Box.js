@@ -11,7 +11,11 @@ export class Box extends Component {
 	}
 
 	getComponent() {
-		return `<div class="box" id="${this.id}" style="">
+		return `<div class="box" id="${this.id}" style="
+      grid-row: ${this.row} / span ${this.rows};
+      grid-column: ${this.col} / span ${this.cols};
+      aspect-ratio: ${this.cols} / ${this.rows};
+    ">
       ${this.getInnerComponent()}
     </div>`;
 	}
