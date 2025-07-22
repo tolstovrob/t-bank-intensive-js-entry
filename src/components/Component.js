@@ -7,5 +7,6 @@ export class Component {
 		this.el.innerHTML += this.getComponent();
 	}
 
+	// NOTE(tolstovrob): overload this!
 	getComponent() {}
 }
