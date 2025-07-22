@@ -4,7 +4,7 @@ export class Component {
 	}
 
 	render() {
-		this.el.innerHTML = this.getComponent();
+		this.el.innerHTML += this.getComponent();
 	}
 
 	getComponent() {}
