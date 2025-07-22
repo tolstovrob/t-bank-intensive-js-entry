@@ -1,10 +1,10 @@
 export class Component {
-	constructor(el) {
-		this.el = el ?? document.querySelector('#app');
+	constructor(root) {
+		this.root = root ?? document.querySelector('#app');
 	}
 
 	render() {
-		this.el.innerHTML += this.getComponent();
+		this.root.innerHTML += this.getComponent();
 	}
 
 	// NOTE(tolstovrob): overload this!
