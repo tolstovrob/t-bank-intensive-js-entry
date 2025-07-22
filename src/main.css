@@ -111,6 +111,8 @@ main {
 	grid-template-columns: repeat(4, 1fr);
 	grid-auto-rows: 1fr;
 	gap: 1rem;
+	box-shadow: 1px 1px 5px black;
+	border: 1px solid gray;
 }
 
 .box {
