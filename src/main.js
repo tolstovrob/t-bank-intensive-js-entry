@@ -1,7 +1,7 @@
 import '@/main.css';
 import { Navbar } from '@/components/Navbar';
-import { Grid } from './components/Grid';
-import { Box } from './components/Box';
+import { Grid } from '@/components/Grid';
+import { Box } from '@/components/Box';
 
 const boxesOptions = [
 	{ id: 'avatar', row: 1, col: 1, rows: 1, cols: 1 },
