@@ -103,14 +103,14 @@ nav {
 
 main {
 	margin: 1rem auto;
-	padding: 1rem;
+	padding: 2rem;
 	max-width: var(--mobile-breakpoint);
 	width: 100%;
 	font-size: xx-large;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-auto-rows: 1fr;
-	gap: 1rem;
+	gap: 2rem;
 	box-shadow: 1px 1px 5px black;
 	border: 1px solid gray;
 }
