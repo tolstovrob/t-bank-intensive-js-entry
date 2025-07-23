@@ -2,7 +2,7 @@ import '@/main.css';
 import { Navbar } from '@/components/Navbar';
 import { Grid } from '@/components/Grid';
 import { Box } from '@/components/Box';
-import { Avatar } from './components/Avatar';
+import { AvatarBox } from './components/AvatarBox';
 
 const boxesOptions = [
 	{ id: 'avatar', type: 'avatar', row: 1, col: 1, rows: 1, cols: 1, src: '/default.png' },
@@ -30,7 +30,7 @@ function createBoxes(root) {
 	return boxesOptions.map((opts) => {
 		switch (opts.type) {
 			case 'avatar':
-				return new Avatar(root, opts);
+				return new AvatarBox(root, opts);
 
 			default:
 				return new Box(root, opts);

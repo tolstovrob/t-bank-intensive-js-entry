@@ -1,6 +1,6 @@
 import { Box } from './Box';
 
-export class Avatar extends Box {
+export class AvatarBox extends Box {
 	constructor(root, options) {
 		super(root, options);
 		this.src = options.src;
