@@ -109,7 +109,7 @@ a {
 main {
 	margin: 1rem auto;
 	padding: 2rem;
-	max-width: rgb(var(--mobile-breakpoint));
+	max-width: var(--mobile-breakpoint);
 	width: 100%;
 	font-size: xx-large;
 	display: grid;
