@@ -3,10 +3,11 @@ import { Navbar } from '@/components/Navbar';
 import { Grid } from '@/components/Grid';
 import { Box } from '@/components/Box';
 import { AvatarBox } from './components/AvatarBox';
+import { InfoBox } from './components/InfoBox';
 
 const boxesOptions = [
 	{ id: 'avatar', type: 'avatar', row: 1, col: 1, rows: 1, cols: 1, src: '/default.png' },
-	{ id: 'info', type: 'info', row: 1, col: 2, rows: 1, cols: 1 },
+	{ id: 'info', type: 'info', row: 1, col: 2, rows: 1, cols: 1, name: 'Karthik SR', position: 'UI/UX Designer' },
 	{ id: 'languages', type: 'languages', row: 1, col: 3, rows: 1, cols: 2 },
 	{ id: 'education', type: 'education', row: 2, col: 1, rows: 3, cols: 2 },
 	{ id: 'interests', type: 'interests', row: 2, col: 3, rows: 2, cols: 2 },
@@ -31,7 +32,8 @@ function createBoxes(root) {
 		switch (opts.type) {
 			case 'avatar':
 				return new AvatarBox(root, opts);
-
+			case 'info':
+				return new InfoBox(root, opts);
 			default:
 				return new Box(root, opts);
 		}
