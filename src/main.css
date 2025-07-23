@@ -79,7 +79,7 @@ a {
 	align-items: center;
 	border-radius: 0.5rem;
 	border: 1px solid var(--box-hover-bg-color);
-	padding: 0.5rem 0.75rem;
+	padding: 0.5rem 0.5rem;
 	font-size: medium;
 	font-weight: bold;
 	font-family: 'Poppins', sans-serif;
