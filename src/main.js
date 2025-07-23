@@ -2,16 +2,17 @@ import '@/main.css';
 import { Navbar } from '@/components/Navbar';
 import { Grid } from '@/components/Grid';
 import { Box } from '@/components/Box';
+import { Avatar } from './components/Avatar';
 
 const boxesOptions = [
-	{ id: 'avatar', row: 1, col: 1, rows: 1, cols: 1 },
-	{ id: 'info', row: 1, col: 2, rows: 1, cols: 1 },
-	{ id: 'languages', row: 1, col: 3, rows: 1, cols: 2 },
-	{ id: 'education', row: 2, col: 1, rows: 3, cols: 2 },
-	{ id: 'interests', row: 2, col: 3, rows: 2, cols: 2 },
-	{ id: 'contacts', row: 4, col: 3, rows: 1, cols: 2 },
-	{ id: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
-	{ id: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
+	{ id: 'avatar', type: 'avatar', row: 1, col: 1, rows: 1, cols: 1, src: '/default.png' },
+	{ id: 'info', type: 'info', row: 1, col: 2, rows: 1, cols: 1 },
+	{ id: 'languages', type: 'languages', row: 1, col: 3, rows: 1, cols: 2 },
+	{ id: 'education', type: 'education', row: 2, col: 1, rows: 3, cols: 2 },
+	{ id: 'interests', type: 'interests', row: 2, col: 3, rows: 2, cols: 2 },
+	{ id: 'contacts', type: 'contacts', row: 4, col: 3, rows: 1, cols: 2 },
+	{ id: 'tools', type: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
+	{ id: 'experience', type: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
 ];
 
 function renderApp(root) {
@@ -26,7 +27,15 @@ function renderApp(root) {
 }
 
 function createBoxes(root) {
-	return boxesOptions.map((opts) => new Box(root, opts));
+	return boxesOptions.map((opts) => {
+		switch (opts.type) {
+			case 'avatar':
+				return new Avatar(root, opts);
+
+			default:
+				return new Box(root, opts);
+		}
+	});
 }
 
 renderApp(document.querySelector('#app'));
