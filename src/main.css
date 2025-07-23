@@ -128,4 +128,5 @@ main {
 	padding: 1rem;
 	background-color: var(--box-bg-color);
 	color: var(--box-fg-color);
+	position: relative;
 }
