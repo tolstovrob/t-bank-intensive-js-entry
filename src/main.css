@@ -102,6 +102,10 @@ a {
 	}
 }
 
+a {
+	text-decoration: unset;
+}
+
 main {
 	margin: 1rem auto;
 	padding: 2rem;
