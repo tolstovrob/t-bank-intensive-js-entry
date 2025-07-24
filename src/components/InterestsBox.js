@@ -7,8 +7,9 @@ export class InterestsBox extends Box {
 	}
 
 	getInnerComponent() {
-		return `<div>
-			${this.tags.map((tag) => `<span>${tag}</span>`).join('')}
+		return `<div class="interests">
+			<h1>Interests</h1>
+			<div class="tags">${this.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>
 		</div>`;
 	}
 }
