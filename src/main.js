@@ -6,6 +6,7 @@ import { AvatarBox } from './components/AvatarBox';
 import { InfoBox } from './components/InfoBox';
 import { LanguagesBox } from './components/LanguagesBox';
 import { EducationBox } from './components/EducationBox';
+import { InterestsBox } from './components/InterestsBox';
 
 const boxesOptions = [
 	{
@@ -68,7 +69,26 @@ const boxesOptions = [
 			},
 		],
 	},
-	{ id: 'interests', type: 'interests', row: 2, col: 3, rows: 2, cols: 2 },
+	{
+		id: 'interests',
+		type: 'interests',
+		row: 2,
+		col: 3,
+		rows: 2,
+		cols: 2,
+		tags: [
+			'branding',
+			'design',
+			'photograhy',
+			'artificial intelligence',
+			'illustration',
+			'typography',
+			'social networks',
+			'research',
+			'dron pilot',
+			'games',
+		],
+	},
 	{ id: 'contacts', type: 'contacts', row: 4, col: 3, rows: 1, cols: 2 },
 	{ id: 'tools', type: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
 	{ id: 'experience', type: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
@@ -98,6 +118,8 @@ function createBoxes(root) {
 				return new LanguagesBox(...props);
 			case 'education':
 				return new EducationBox(...props);
+			case 'interests':
+				return new InterestsBox(...props);
 			default:
 				return new Box(...props);
 		}
