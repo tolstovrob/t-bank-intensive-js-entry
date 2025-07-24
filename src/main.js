@@ -9,6 +9,7 @@ import { EducationBox } from './components/EducationBox';
 import { InterestsBox } from './components/InterestsBox';
 import { ContactsBox } from './components/ContactsBox';
 import { ToolsBox } from './components/ToolsBox';
+import { ExperienceBox } from './components/ExperienceBox';
 
 const boxesOptions = [
 	{
@@ -102,7 +103,46 @@ const boxesOptions = [
 		phone: '+7-000-000-00-00',
 	},
 	{ id: 'tools', type: 'tools', row: 4, col: 1, rows: 3, cols: 1 },
-	{ id: 'experience', type: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
+	{
+		id: 'experience',
+		type: 'experience',
+		row: 4,
+		col: 2,
+		rows: 3,
+		cols: 3,
+		experience: [
+			{
+				time: 'Jul. 2023 - Jul. 2024',
+				position: 'Senior Graphic Designer',
+				company: 'Pinnacle',
+				schedule: 'Full-time',
+				tasks: [
+					'Research and brainstorm various design ideas for content and marketing.',
+					'Review the work submitted by Junior Designers and sharing feedback.',
+				],
+			},
+			{
+				time: 'Nov. 2021 - Jan. 2023',
+				position: 'Graphic / Web designer',
+				company: 'Double Square',
+				schedule: 'Full-time',
+				tasks: [
+					'Development of internal projects from scratch, product design of brands',
+					'Research and brainstorm various design ideas for content and marketing.',
+					'Review the work submitted by Junior Designers and sharing feedback.',
+				],
+			},
+			{
+				time: 'Feb. 2021 - Jul. 2021',
+				position: 'Graphic Designer',
+				company: 'Pinnacle',
+				tasks: [
+					'Research and brainstorm various design ideas for content and marketing.',
+					'Review the work submitted by Junior Designers and sharing feedback.',
+				],
+			},
+		],
+	},
 ];
 
 function renderApp(root) {
@@ -135,6 +175,8 @@ function createBoxes(root) {
 				return new ContactsBox(...props);
 			case 'tools':
 				return new ToolsBox(...props);
+			case 'experience':
+				return new ExperienceBox(...props);
 			default:
 				return new Box(...props);
 		}
