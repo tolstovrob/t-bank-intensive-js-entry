@@ -170,7 +170,7 @@ main {
 		justify-content: space-between;
 		font-weight: 600;
 
-		& h1 {
+		& > h1 {
 			font-size: 2rem;
 		}
 
@@ -191,6 +191,71 @@ main {
 				border-radius: 0.5rem;
 				height: 75%;
 				background-color: rgb(var(--accent-bg-color));
+			}
+		}
+	}
+
+	& .education {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		gap: 2rem;
+
+		& > h1 {
+			font-weight: 600;
+			font-size: 2rem;
+		}
+
+		& > div {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+			flex-wrap: wrap;
+
+			& > div {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				border-radius: 1rem;
+				padding: 1rem;
+				max-width: calc(50% - 1rem);
+
+				& > .year {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: space-between;
+					font-weight: normal;
+					font-size: x-large;
+
+					& > div:has(svg) {
+						height: 1.5rem;
+						width: 1.5rem;
+						fill: rgb(var(--tbank-bg-color));
+					}
+				}
+
+				& > .title {
+					font-size: x-large;
+					font-weight: 600;
+				}
+
+				& > .tags {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					gap: 0.25rem;
+					flex-wrap: wrap;
+
+					& > span {
+						font-size: large;
+					}
+				}
+
+				& > .school {
+					margin-top: auto;
+					font-size: large;
+				}
 			}
 		}
 	}
