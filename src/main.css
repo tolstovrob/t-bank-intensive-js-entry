@@ -321,4 +321,50 @@ main {
 		background-color: rgb(var(--default-fg-color));
 		color: rgb(var(--default-bg-color));
 	}
+
+	& .tools {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		gap: 2rem;
+
+		& > h1 {
+			font-weight: 600;
+			font-size: 2rem;
+		}
+
+		& > div {
+			position: relative;
+			border-radius: 1rem;
+			padding: 2rem;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+			background-color: rgb(var(--default-bg-color));
+
+			& > div:has(h2) {
+				position: absolute;
+				top: -0.5cap;
+				left: 0;
+				right: 0;
+				text-align: center;
+
+				& > h2 {
+					width: max-content;
+					margin: auto;
+					font-size: small;
+					font-weight: normal;
+					padding: 0 0.5rem;
+					border-radius: 1cap;
+					background-color: rgb(var(--default-fg-color));
+					color: rgb(var(--default-bg-color));
+				}
+			}
+
+			& img {
+				height: 2rem;
+				margin: auto;
+			}
+		}
+	}
 }
