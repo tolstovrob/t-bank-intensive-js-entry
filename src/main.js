@@ -8,6 +8,7 @@ import { LanguagesBox } from './components/LanguagesBox';
 import { EducationBox } from './components/EducationBox';
 import { InterestsBox } from './components/InterestsBox';
 import { ContactsBox } from './components/ContactsBox';
+import { ToolsBox } from './components/ToolsBox';
 
 const boxesOptions = [
 	{
@@ -100,7 +101,7 @@ const boxesOptions = [
 		email: 'srkarthik.designscape@gmail.com',
 		phone: '+7-000-000-00-00',
 	},
-	{ id: 'tools', type: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
+	{ id: 'tools', type: 'tools', row: 4, col: 1, rows: 3, cols: 1 },
 	{ id: 'experience', type: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
 ];
 
@@ -132,6 +133,8 @@ function createBoxes(root) {
 				return new InterestsBox(...props);
 			case 'contacts':
 				return new ContactsBox(...props);
+			case 'tools':
+				return new ToolsBox(...props);
 			default:
 				return new Box(...props);
 		}
