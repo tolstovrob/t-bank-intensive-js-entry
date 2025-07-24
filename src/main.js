@@ -7,6 +7,7 @@ import { InfoBox } from './components/InfoBox';
 import { LanguagesBox } from './components/LanguagesBox';
 import { EducationBox } from './components/EducationBox';
 import { InterestsBox } from './components/InterestsBox';
+import { ContactsBox } from './components/ContactsBox';
 
 const boxesOptions = [
 	{
@@ -89,7 +90,16 @@ const boxesOptions = [
 			'games',
 		],
 	},
-	{ id: 'contacts', type: 'contacts', row: 4, col: 3, rows: 1, cols: 2 },
+	{
+		id: 'contacts',
+		type: 'contacts',
+		row: 3,
+		col: 3,
+		rows: 1,
+		cols: 2,
+		email: 'srkarthik.designscape@gmail.com',
+		phone: '+7-000-000-00-00',
+	},
 	{ id: 'tools', type: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
 	{ id: 'experience', type: 'experience', row: 5, col: 2, rows: 3, cols: 3 },
 ];
@@ -120,6 +130,8 @@ function createBoxes(root) {
 				return new EducationBox(...props);
 			case 'interests':
 				return new InterestsBox(...props);
+			case 'contacts':
+				return new ContactsBox(...props);
 			default:
 				return new Box(...props);
 		}
