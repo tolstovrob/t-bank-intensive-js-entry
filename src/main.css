@@ -250,6 +250,10 @@ main {
 					& > span {
 						font-size: large;
 					}
+
+					& > span::before {
+						content: '#';
+					}
 				}
 
 				& > .school {

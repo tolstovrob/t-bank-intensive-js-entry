@@ -51,19 +51,19 @@ const boxesOptions = [
 		schools: [
 			{
 				title: 'UI/UX',
-				tags: ['#UX', '#UI', '#research', '#DesignSystem', '#Agile', '#wireframing', '#figma', '#IA'],
+				tags: ['UX', 'UI', 'research', 'DesignSystem', 'Agile', 'wireframing', 'figma', 'IA'],
 				school: 'Neoland',
 				year: '2024',
 			},
 			{
 				title: 'Product Designer',
-				tags: ['#analytics', '#research', '#prototype', '#wireframes'],
+				tags: ['analytics', 'research', 'prototype', 'wireframes'],
 				school: 'Coursera',
 				year: '2022',
 			},
 			{
 				title: 'Graphic Design',
-				tags: ['#web', '#branding', '#illustration', '#adobe'],
+				tags: ['web', 'branding', 'illustration', 'adobe'],
 				school: 'Cali Institute of the Arts',
 				years: '2017-2021',
 			},
@@ -126,4 +126,4 @@ function createBoxes(root) {
 	});
 }
 
-renderApp(document.querySelector('#app'));
+renderApp(document.querySelector('app'));
