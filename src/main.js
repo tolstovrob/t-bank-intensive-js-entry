@@ -74,7 +74,7 @@ const boxesOptions = [
 		type: 'interests',
 		row: 2,
 		col: 3,
-		rows: 2,
+		rows: 1,
 		cols: 2,
 		tags: [
 			'branding',
