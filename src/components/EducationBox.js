@@ -36,7 +36,9 @@ export class EducationBox extends Box {
 							</div>
 						</div>
 						<h1 class="title">${school.title}</h1>
-						<div class="tags">${school.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>
+						<div class="tags" style="color: ${
+							index === 0 ? 'rgb(var(--accent-fg-color));' : 'rgb(var(--accent-bg-color));'
+						}">${school.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>
 						<p class="school">${school.school}</p>
 					</div>`,
 					)
