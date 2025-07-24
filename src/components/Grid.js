@@ -6,7 +6,7 @@ export class Grid extends Component {
 	}
 
 	getComponent() {
-		return `<main></main>`;
+		return `<div class="main-wrapper"><main></main></div>`;
 	}
 
 	getSelfSelector() {

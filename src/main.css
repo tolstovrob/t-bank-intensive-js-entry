@@ -29,6 +29,7 @@ body {
 	background-color: rgb(var(--default-bg-color));
 	color: rgb(var(--default-fg-color));
 	padding: 0 1rem;
+	overflow: scroll;
 }
 
 nav {
@@ -108,11 +109,20 @@ a {
 	text-decoration: unset;
 }
 
+.main-wrapper {
+	width: 100%;
+	height: calc(100vh - 8rem);
+	overflow: scroll;
+	background-color: rgba(var(--default-bg-color), 0.5);
+	border: 1px solid rgb(var(--box-hover-bg-color));
+	border-radius: 1rem;
+}
+
 main {
 	margin: 1rem auto;
 	padding: 2rem;
 	max-width: var(--mobile-breakpoint);
-	width: 100%;
+	width: var(--mobile-breakpoint);
 	font-size: xx-large;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
