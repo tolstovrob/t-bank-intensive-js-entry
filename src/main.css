@@ -263,4 +263,30 @@ main {
 			}
 		}
 	}
+
+	& .interests {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		gap: 2rem;
+
+		& > h1 {
+			font-weight: 600;
+			font-size: 2rem;
+		}
+
+		& > .tags {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 1rem;
+			font-size: large;
+
+			& > span {
+				padding: 0.5rem 1rem;
+				background-color: rgb(var(--default-bg-color));
+				border-radius: 2rem;
+			}
+		}
+	}
 }
