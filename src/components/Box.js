@@ -1,8 +1,8 @@
 import { Component } from './Component';
 
 export class Box extends Component {
-	constructor(el, options) {
-		super(el);
+	constructor(root, options) {
+		super(root);
 		this.row = options.row;
 		this.col = options.col;
 		this.rows = options.rows;
