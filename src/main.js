@@ -59,15 +59,17 @@ function renderApp(root) {
 
 function createBoxes(root) {
 	return boxesOptions.map((opts) => {
+		const props = [root, opts];
+
 		switch (opts.type) {
 			case 'avatar':
-				return new AvatarBox(root, opts);
+				return new AvatarBox(...props);
 			case 'info':
-				return new InfoBox(root, opts);
+				return new InfoBox(...props);
 			case 'languages':
-				return new LanguagesBox(root, opts);
+				return new LanguagesBox(...props);
 			default:
-				return new Box(root, opts);
+				return new Box(...props);
 		}
 	});
 }
