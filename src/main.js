@@ -5,6 +5,7 @@ import { Box } from '@/components/Box';
 import { AvatarBox } from './components/AvatarBox';
 import { InfoBox } from './components/InfoBox';
 import { LanguagesBox } from './components/LanguagesBox';
+import { EducationBox } from './components/EducationBox';
 
 const boxesOptions = [
 	{
@@ -39,7 +40,34 @@ const boxesOptions = [
 			French: 80,
 		},
 	},
-	{ id: 'education', type: 'education', row: 2, col: 1, rows: 3, cols: 2 },
+	{
+		id: 'education',
+		type: 'education',
+		row: 2,
+		col: 1,
+		rows: 3,
+		cols: 2,
+		schools: [
+			{
+				title: 'UI/UX',
+				tags: ['#UX', '#UI', '#research', '#DesignSystem', '#Agile', '#wireframing', '#figma', '#IA'],
+				school: 'Neoland',
+				year: '2024',
+			},
+			{
+				title: 'Product Designer',
+				tags: ['#analytics', '#research', '#prototype', '#wireframes'],
+				school: 'Coursera',
+				year: '2022',
+			},
+			{
+				title: 'Graphic Design',
+				tags: ['#web', '#branding', '#illustration', '#adobe'],
+				school: 'Cali Institute of the Arts',
+				years: '2017-2021',
+			},
+		],
+	},
 	{ id: 'interests', type: 'interests', row: 2, col: 3, rows: 2, cols: 2 },
 	{ id: 'contacts', type: 'contacts', row: 4, col: 3, rows: 1, cols: 2 },
 	{ id: 'tools', type: 'tools', row: 5, col: 1, rows: 3, cols: 1 },
@@ -68,6 +96,8 @@ function createBoxes(root) {
 				return new InfoBox(...props);
 			case 'languages':
 				return new LanguagesBox(...props);
+			case 'education':
+				return new EducationBox(...props);
 			default:
 				return new Box(...props);
 		}
