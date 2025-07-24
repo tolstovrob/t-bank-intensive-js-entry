@@ -45,7 +45,7 @@ const boxesOptions = [
 		type: 'education',
 		row: 2,
 		col: 1,
-		rows: 3,
+		rows: 2,
 		cols: 2,
 		schools: [
 			{
