@@ -9,6 +9,7 @@ export class Box extends Component {
 		this.cols = options.cols;
 		this.id = options.id;
 		this.editable = false;
+		this.loadState();
 	}
 
 	render() {
@@ -49,8 +50,20 @@ export class Box extends Component {
         </div>`;
 	}
 
+	saveState() {
+		localStorage.setItem(`box-${this.id}`, JSON.stringify({}));
+	}
+
+	loadState() {
+		const state = localStorage.getItem(`box-${this.id}`);
+		if (state) {
+			return JSON.parse(state);
+		}
+		return null;
+	}
+
 	applyChanges(inputs) {
-		// To be overridden by subclasses
+		this.saveState();
 	}
 
 	attachEventListeners() {
@@ -66,7 +79,7 @@ export class Box extends Component {
 				const boxElement = this.root.querySelector(`#${this.id}`);
 				if (boxElement) {
 					boxElement.outerHTML = this.getComponent();
-					this.attachEventListeners(); // Re-attach after replacing element
+					this.attachEventListeners();
 				} else {
 					console.error(`Box element with id ${this.id} not found`);
 				}

@@ -3,21 +3,34 @@ import { Box } from './Box';
 export class AvatarBox extends Box {
 	constructor(root, options) {
 		super(root, options);
-		this.image = options.image || './avatar.jpg'; // Default image
+		this.src = options.src || '/default.png';
+		const savedState = this.loadState();
+		if (savedState && savedState.src) {
+			this.src = savedState.src;
+		}
 	}
 
 	getInnerComponent() {
-		return `<img class="avatar" src="${this.image}" alt="Avatar" />`;
+		return `<img class="avatar" src="${this.src}" alt="Avatar" />`;
 	}
 
 	getEditableComponent() {
-		return `<div class="editable-content">
+		return `<div class="editable">
             <h1>Edit Avatar</h1>
             <div class="entry">
                 <input type="file" name="avatar" accept="image/*" />
-                <img class="avatar-preview" src="${this.image}" alt="Preview" />
+                <img class="avatar-preview" src="${this.src}" alt="Preview" />
             </div>
         </div>`;
+	}
+
+	saveState() {
+		localStorage.setItem(`box-${this.id}`, JSON.stringify({ src: this.src }));
+	}
+
+	loadState() {
+		const state = super.loadState();
+		return state || { src: this.src };
 	}
 
 	applyChanges(inputs) {
@@ -25,12 +38,19 @@ export class AvatarBox extends Box {
 		if (fileInput && fileInput.files && fileInput.files[0]) {
 			const file = fileInput.files[0];
 			if (file.type.startsWith('image/')) {
-				// Revoke previous URL to prevent memory leaks
-				if (this.image.startsWith('blob:')) {
-					URL.revokeObjectURL(this.image);
+				if (file.size > 5 * 1024 * 1024) {
+					alert('File size exceeds 5MB');
+					return;
 				}
-				this.image = URL.createObjectURL(file);
+				const reader = new FileReader();
+				reader.onload = () => {
+					this.src = reader.result;
+					this.saveState();
+				};
+				reader.readAsDataURL(file);
 			}
+		} else {
+			this.saveState();
 		}
 	}
 
@@ -42,17 +62,21 @@ export class AvatarBox extends Box {
 				if (fileInput.files && fileInput.files[0]) {
 					const file = fileInput.files[0];
 					if (file.type.startsWith('image/')) {
-						// Revoke previous URL to prevent memory leaks
-						if (this.image.startsWith('blob:')) {
-							URL.revokeObjectURL(this.image);
+						if (file.size > 5 * 1024 * 1024) {
+							alert('File size exceeds 5MB');
+							return;
 						}
-						this.image = URL.createObjectURL(file);
-						this.editable = true; // Stay in edit mode
-						const boxElement = this.root.querySelector(`#${this.id}`);
-						if (boxElement) {
-							boxElement.outerHTML = this.getComponent();
-							this.attachEventListeners(); // Re-attach listeners
-						}
+						const reader = new FileReader();
+						reader.onload = () => {
+							this.src = reader.result;
+							this.editable = true;
+							const boxElement = this.root.querySelector(`#${this.id}`);
+							if (boxElement) {
+								boxElement.outerHTML = this.getComponent();
+								this.attachEventListeners();
+							}
+						};
+						reader.readAsDataURL(file);
 					}
 				}
 			});

@@ -3,8 +3,13 @@ import { Box } from './Box';
 export class InfoBox extends Box {
 	constructor(root, options) {
 		super(root, options);
-		this.name = options.name;
-		this.position = options.position;
+		this.name = options.name || 'Karthik SR';
+		this.position = options.position || 'UI/UX Designer';
+		const savedState = this.loadState();
+		if (savedState) {
+			this.name = savedState.name || this.name;
+			this.position = savedState.position || this.position;
+		}
 	}
 
 	getInnerComponent() {
@@ -25,8 +30,23 @@ export class InfoBox extends Box {
         </div>`;
 	}
 
+	saveState() {
+		localStorage.setItem(`box-${this.id}`, JSON.stringify({ name: this.name, position: this.position }));
+	}
+
+	loadState() {
+		return super.loadState();
+	}
+
 	applyChanges(inputs) {
-		this.name = inputs[0].value || this.name;
-		this.position = inputs[1].value || this.position;
+		const nameInput = inputs.find((input) => input.name === 'name');
+		const positionInput = inputs.find((input) => input.name === 'position');
+		if (nameInput && nameInput.value.trim()) {
+			this.name = nameInput.value.trim();
+		}
+		if (positionInput && positionInput.value.trim()) {
+			this.position = positionInput.value.trim();
+		}
+		this.saveState();
 	}
 }
