@@ -217,6 +217,7 @@ main {
 		flex-direction: column;
 		height: 100%;
 		gap: 2rem;
+		overflow: auto;
 
 		& > h1 {
 			font-weight: 600;
@@ -286,6 +287,7 @@ main {
 		flex-direction: column;
 		height: 100%;
 		gap: 2rem;
+		overflow: auto;
 
 		& > h1 {
 			font-weight: 600;
@@ -390,6 +392,7 @@ main {
 		flex-direction: column;
 		height: 100%;
 		gap: 2rem;
+		overflow: auto;
 
 		& > h1 {
 			font-weight: 600;
@@ -483,11 +486,21 @@ main {
 		flex-direction: column;
 		gap: 1rem;
 		height: 100%;
-		padding: 1rem;
+		overflow: auto;
 
 		& > h1 {
 			font-size: 2rem;
 			font-weight: 600;
+			margin: 0;
+		}
+
+		& > .entry {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			padding: 1rem;
+			border: 1px solid rgb(var(--box-hover-bg-color));
+			border-radius: 0.5rem;
 		}
 
 		& input,
@@ -501,11 +514,18 @@ main {
 			color: rgb(var(--default-fg-color));
 			width: 100%;
 			box-sizing: border-box;
+			margin: 0;
 		}
 
 		& textarea {
 			resize: vertical;
 			min-height: 4rem;
+		}
+
+		& .action-buttons {
+			display: flex;
+			gap: 0.5rem;
+			margin-top: 1rem;
 		}
 	}
 }
