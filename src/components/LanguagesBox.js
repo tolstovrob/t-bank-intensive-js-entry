@@ -15,8 +15,7 @@ export class LanguagesBox extends Box {
 	}
 
 	getInnerComponent() {
-		return `
-            <div class="languages">
+		return `<div class="languages">
                 <h1>Languages</h1>
                 <div>
                     ${Object.entries(this.languages)
@@ -28,13 +27,11 @@ export class LanguagesBox extends Box {
 											)
 											.join('')}
                 </div>
-            </div>
-        `;
+            </div>`;
 	}
 
 	getEditableComponent() {
-		return `
-            <div class="editable">
+		return `<div class="editable">
                 <h1>Edit Languages</h1>
                 ${Object.entries(this.languages)
 									.map(
@@ -58,8 +55,7 @@ export class LanguagesBox extends Box {
                 `
 										: ''
 								}
-            </div>
-        `;
+            </div>`;
 	}
 
 	saveState() {
