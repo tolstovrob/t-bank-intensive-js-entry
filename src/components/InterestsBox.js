@@ -22,25 +22,21 @@ export class InterestsBox extends Box {
 	}
 
 	getInnerComponent() {
-		return `
-            <div class="interests">
+		return `<div class="interests">
                 <h1>Interests</h1>
                 <div class="tags">
                     ${this.tags.map((tag) => `<span>${tag}</span>`).join('')}
                 </div>
-            </div>
-        `;
+            </div>`;
 	}
 
 	getEditableComponent() {
-		return `
-            <div class="editable">
+		return `<div class="editable">
                 <h1>Edit Interests</h1>
                 <div class="entry">
                     <input type="text" name="tags" value="${this.tags.join(', ')}" placeholder="Tags (comma-separated)" />
                 </div>
-            </div>
-        `;
+            </div>`;
 	}
 
 	saveState() {
