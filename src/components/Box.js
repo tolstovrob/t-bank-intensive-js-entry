@@ -41,6 +41,28 @@ export class Box extends Component {
         </div>`;
 	}
 
+	getContentForExport() {
+		const commonStyles = `
+            grid-row: ${this.row} / span ${this.rows};
+            grid-column: ${this.col} / span ${this.cols};
+            aspect-ratio: ${this.cols} / ${this.rows};
+        `;
+		return `<div class="box" id="${this.id}" style="${commonStyles}">
+            ${this.getInnerComponent()}
+        </div>`;
+	}
+
+	disableEditing() {
+		if (this.editable) {
+			this.editable = false;
+			const boxElement = this.root.querySelector(`#${this.id}`);
+			if (boxElement) {
+				boxElement.outerHTML = this.getComponent();
+				this.attachEventListeners();
+			}
+		}
+	}
+
 	getInnerComponent() {
 		return `Hello from box ${this.id}`;
 	}
