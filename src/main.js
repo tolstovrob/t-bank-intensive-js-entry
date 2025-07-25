@@ -183,4 +183,4 @@ function createBoxes(root) {
 	});
 }
 
-renderApp(document.querySelector('app'));
+renderApp(document.querySelector('#app'));
