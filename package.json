@@ -25,5 +25,8 @@
 		"lint-staged": "^16.1.2",
 		"prettier": "^3.6.2",
 		"vite": "^7.0.5"
+	},
+	"dependencies": {
+		"jspdf": "^3.0.1"
 	}
 }
