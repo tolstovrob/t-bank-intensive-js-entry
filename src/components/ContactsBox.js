@@ -26,8 +26,7 @@ export class ContactsBox extends Box {
 	}
 
 	getEditableComponent() {
-		return `
-            <div class="editable">
+		return `<div class="editable">
                 <h1>Edit Contacts</h1>
                 <div class="entry">
                     <div class="input-group">
@@ -43,8 +42,7 @@ export class ContactsBox extends Box {
                         </button>
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
 	}
 
 	saveState() {
