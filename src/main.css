@@ -142,6 +142,13 @@ main {
 	color: rgb(var(--box-fg-color));
 	position: relative;
 
+	& > button:first-child {
+		position: absolute;
+		right: 2rem;
+		top: 2rem;
+		background-color: rgba(var(--box-hover-bg-color), 0.5);
+	}
+
 	& .avatar {
 		object-fit: cover;
 		aspect-ratio: 1 / 1;
