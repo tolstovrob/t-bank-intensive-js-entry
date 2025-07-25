@@ -2,14 +2,16 @@ import '@/main.css';
 import { Navbar } from '@/components/Navbar';
 import { Grid } from '@/components/Grid';
 import { Box } from '@/components/Box';
-import { AvatarBox } from './components/AvatarBox';
-import { InfoBox } from './components/InfoBox';
-import { LanguagesBox } from './components/LanguagesBox';
-import { EducationBox } from './components/EducationBox';
-import { InterestsBox } from './components/InterestsBox';
-import { ContactsBox } from './components/ContactsBox';
-import { ToolsBox } from './components/ToolsBox';
-import { ExperienceBox } from './components/ExperienceBox';
+import { AvatarBox } from '@/components/AvatarBox';
+import { InfoBox } from '@/components/InfoBox';
+import { LanguagesBox } from '@/components/LanguagesBox';
+import { EducationBox } from '@/components/EducationBox';
+import { InterestsBox } from '@/components/InterestsBox';
+import { ContactsBox } from '@/components/ContactsBox';
+import { ToolsBox } from '@/components/ToolsBox';
+import { ExperienceBox } from '@/components/ExperienceBox';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const boxesOptions = [
 	{
@@ -68,7 +70,7 @@ const boxesOptions = [
 				title: 'Graphic Design',
 				tags: ['web', 'branding', 'illustration', 'adobe'],
 				school: 'Cali Institute of the Arts',
-				years: '2017-2021',
+				year: '2017-2021',
 			},
 		],
 	},
@@ -82,13 +84,13 @@ const boxesOptions = [
 		tags: [
 			'branding',
 			'design',
-			'photograhy',
+			'photography',
 			'artificial intelligence',
 			'illustration',
 			'typography',
 			'social networks',
 			'research',
-			'dron pilot',
+			'drone pilot',
 			'games',
 		],
 	},
@@ -102,7 +104,29 @@ const boxesOptions = [
 		email: 'srkarthik.designscape@gmail.com',
 		phone: '+7-000-000-00-00',
 	},
-	{ id: 'tools', type: 'tools', row: 4, col: 1, rows: 3, cols: 1 },
+	{
+		id: 'tools',
+		type: 'tools',
+		row: 4,
+		col: 1,
+		rows: 3,
+		cols: 1,
+		tools: [
+			{ name: 'Figma', icon: '/logoFigma.svg' },
+			{ name: 'CreativeCloud', icon: '/logoCreativeCloud.svg' },
+			{ name: 'Miro', icon: '/logoMiro 1.svg' },
+			{ name: 'Notion', icon: '/logoNotion.svg' },
+			{ name: 'Meet', icon: '/logoMeet.svg' },
+			{ name: 'Analytics', icon: '/logoanalytics.svg' },
+			{ name: 'Zapier', icon: '/logoZapier 1.svg' },
+			{ name: 'Webflow', icon: '/logoWebflow.svg' },
+			{ name: 'Framer', icon: '/logoFramer.svg' },
+			{ name: 'Wordpress', icon: '/logoWordpress.svg' },
+			{ name: 'ChatGPT', icon: '/logoChatGPT 1.svg' },
+			{ name: 'Copilot', icon: '/logoCopilot 1.svg' },
+			{ name: 'Midjourney', icon: '/logoMidjourney 1.svg' },
+		],
+	},
 	{
 		id: 'experience',
 		type: 'experience',
@@ -154,6 +178,8 @@ function renderApp(root) {
 
 	const boxes = createBoxes(grid.getSelfSelector());
 	boxes.forEach((box) => box.render());
+
+	document.getElementById('export-pdf').addEventListener('click', () => exportToPDF(boxes, grid.getSelfSelector()));
 }
 
 function createBoxes(root) {
@@ -181,6 +207,79 @@ function createBoxes(root) {
 				return new Box(...props);
 		}
 	});
+}
+
+async function exportToPDF(boxes, gridSelector) {
+	try {
+		const doc = new jsPDF({
+			orientation: 'portrait',
+			unit: 'px',
+			format: 'a4',
+		});
+
+		boxes.forEach((box) => box.disableEditing());
+
+		const mainElement = gridSelector;
+		if (!mainElement) throw new Error('Grid element not found');
+
+		// Preserve original styles
+		const originalStyles = {
+			display: mainElement.style.display,
+			width: mainElement.style.width,
+			height: mainElement.style.height,
+			padding: mainElement.style.padding,
+			margin: mainElement.style.margin,
+		};
+
+		// Get original dimensions
+		const originalWidth = mainElement.offsetWidth;
+		const originalHeight = mainElement.offsetHeight;
+		console.log('Original dimensions:', { width: originalWidth, height: originalHeight });
+
+		// Calculate scale to fit both width and height within A4
+		const pageWidth = 595; // A4 width
+		const pageHeight = 842; // A4 height
+		const margin = 10;
+		const availableWidth = pageWidth - 2 * margin; // 575px
+		const availableHeight = pageHeight - 2 * margin; // 822px
+
+		const scale = Math.min(availableWidth / originalWidth, availableHeight / originalHeight);
+		const scaledWidth = originalWidth * scale;
+		const scaledHeight = originalHeight * scale;
+		console.log('Scaled dimensions:', { scale, scaledWidth, scaledHeight });
+
+		// Ensure styles are applied for canvas
+		mainElement.style.position = 'relative';
+		mainElement.style.backgroundColor = '#fff';
+
+		// Force reflow
+		await new Promise((resolve) => setTimeout(resolve, 0));
+
+		const canvas = await html2canvas(mainElement, {
+			scale: 1, // Preserve original look
+			useCORS: true,
+			logging: true,
+			backgroundColor: '#fff',
+			width: originalWidth,
+			height: originalHeight,
+		});
+
+		console.log('Canvas dimensions:', { width: canvas.width, height: canvas.height });
+
+		const imgData = canvas.toDataURL('image/png');
+		const xOffset = (pageWidth - scaledWidth) / 2; // Center horizontally
+		const yOffset = (pageHeight - scaledHeight) / 2; // Center vertically
+
+		// Add image with scaled dimensions to fit fully
+		doc.addImage(imgData, 'PNG', xOffset, yOffset, scaledWidth, scaledHeight);
+		doc.save('resume.pdf');
+
+		// Restore original styles
+		Object.assign(mainElement.style, originalStyles);
+	} catch (error) {
+		console.error('Error exporting to PDF:', error);
+		alert('Failed to export PDF. Check console for details.');
+	}
 }
 
 renderApp(document.querySelector('#app'));
